@@ -24,8 +24,6 @@ row_number = sheet.nrows
 col_number = sheet.ncols
 print("Col: " + str(col_number))
 print("Row: " + str(row_number))
-#for i in range(1, 4):                                 #пробую функцию cell на простом примере
-#     print(i, sheet.cell(rowx=i, colx=1).value)
 #for i in range(1, sheet.nrows):
 #     if sheet.cell(rowx=i, colx=1).value == ''
 

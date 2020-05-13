@@ -1,5 +1,6 @@
 import pandas as pd
 import xlrd
+import datetime
 import xlwt
 import openpyxl
 class STUDENT(object):
@@ -18,6 +19,8 @@ file_name = str(input())
 group = file_name
 file_name = "D:" + file_name + ".xlsx"
 rb = xlrd.open_workbook(file_name,formatting_info=False)
+if rb == 0:
+    print('Open error')
 sheet = rb.sheet_by_index(0)            #выбираем активный лист
 row = []
 row_number = sheet.nrows
@@ -26,9 +29,13 @@ print("Col: " + str(col_number))
 print("Row: " + str(row_number))
 #for i in range(1, sheet.nrows):
 #     if sheet.cell(rowx=i, colx=1).value == ''
-
-
-kolvo = col_number - 4
+i = 2
+kolvo = 0
+#print("U1 is " + str(sheet.cell(rowx=0, colx=20).value))
+while sheet.cell(rowx=0, colx=i).value != 'Средний балл' and sheet.cell(rowx=1, colx=i).value != 'Middle point':
+    kolvo += 1
+    i += 1
+#print('Kolvo is ' + str(kolvo))
 if row_number > 0:
     for i in range(1, row_number - 1):
         Student = STUDENT(sheet.cell(rowx=i+1, colx=2).value, group, sheet.cell(rowx=i+1, colx=2+kolvo+1).value,
